@@ -22,6 +22,16 @@ vim.keymap.set('n', '<C-Down>', ':resize +2<CR>', opts)
 vim.keymap.set('n', '<C-Left>', ':vertical resize -2<CR>', opts)
 vim.keymap.set('n', '<C-Right>', ':vertical resize +2<CR>', opts)
 
+-- bufferline
+vim.keymap.set("n", "<C-h>", ":BufferLineCyclePrev<CR>", opt)
+vim.keymap.set("n", "<C-l>", ":BufferLineCycleNext<CR>", opt)
+
+-- Telescope
+-- 查找文件
+vim.keymap.set("n", "<C-p>", ":Telescope find_files<CR>", opt)
+-- 全局搜索
+vim.keymap.set("n", "<C-f>", ":Telescope live_grep<CR>", opt)
+
 -----------------
 -- Visual mode --
 -----------------
@@ -29,4 +39,13 @@ vim.keymap.set('n', '<C-Right>', ':vertical resize +2<CR>', opts)
 -- Hint: start visual mode with the same area as the previous area and the same mode
 vim.keymap.set('v', '<', '<gv', opts)
 vim.keymap.set('v', '>', '>gv', opts)
+
+
+-- nvim-tree
+vim.keymap.set("n", "<A-e>", ":NvimTreeToggle<CR>", opt)
+vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>", opt)
+vim.keymap.set("n", "<leader>t", ":NvimTreeFocus<CR>", opt)
+vim.keymap.set("n", "<leader>ff", ":NvimTreeFindFile<CR>", opt)
+vim.keymap.set("n", "<leader>c", ":NvimTreeFindFileToggle<CR>", opt)
+
 

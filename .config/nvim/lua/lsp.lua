@@ -11,11 +11,11 @@ require('mason').setup({
 require('mason-lspconfig').setup({
     -- A list of servers to automatically install if they're not already installed
     ensure_installed = { 
-        'pylsp', 
-        'lua_ls', 
-        'rust_analyzer', 
-        "ccls", 
-        "bashls"
+      --'clangd',
+        -- 'pylsp', 
+--        'lua_ls', 
+        -- 'rust_analyzer', 
+--        "bashls"
     },
 })
 
@@ -66,9 +66,17 @@ end
 -- How to add LSP for a specific language?
 -- 1. use `:Mason` to install corresponding LSP
 -- 2. add configuration below
-lspconfig.pylsp.setup({
-	on_attach = on_attach,
-})
-lspconfig.ccls.setup({
-    on_attach = on_attach,
-})
+
+--lspconfig.clangd.setup({
+--on_attach = on_attach,
+--})
+
+lspconfig.ccls.setup {
+  on_attach = on_attach,
+  init_options = {
+    cache = {
+      directory = ".ccls-cache";
+    };
+  }
+}
+

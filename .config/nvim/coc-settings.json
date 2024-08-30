@@ -1,0 +1,28 @@
+{
+  "languageserver": {
+    "ccls": {
+      "command": "ccls",
+      "filetypes": ["c", "cpp", "ipp", "objc", "objcpp"],
+      "rootPatterns": [".ccls", "compile_commands.json", ".git/", ".hg/"], 
+      "initializationOptions": {
+        "cache": {
+          "directory": "~/.local/ccls_cache",
+          "retainInMemory": 2
+        },
+        "index": {
+          "threads": 32
+        },
+        "completion": {
+          "caseSensitivity": 2
+        },
+        "highlight": {
+          "lsRanges" : true
+        }
+      }
+    }
+  },
+  "diagnostic.enableSign": false,
+  "coc.source.around.firstMatch": false,
+  "coc.source.buffer.firstMatch": false,
+  "coc.preferences.hoverTarget": "float"
+}
