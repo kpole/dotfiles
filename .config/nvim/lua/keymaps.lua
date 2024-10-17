@@ -23,14 +23,18 @@ vim.keymap.set('n', '<C-Left>', ':vertical resize -2<CR>', opts)
 vim.keymap.set('n', '<C-Right>', ':vertical resize +2<CR>', opts)
 
 -- bufferline
-vim.keymap.set("n", "<C-h>", ":BufferLineCyclePrev<CR>", opt)
-vim.keymap.set("n", "<C-l>", ":BufferLineCycleNext<CR>", opt)
+vim.keymap.set("n", "<C-h>", ":BufferLineCyclePrev<CR>", opts)
+vim.keymap.set("n", "<C-l>", ":BufferLineCycleNext<CR>", opts)
 
 -- Telescope
 -- 查找文件
-vim.keymap.set("n", "<C-p>", ":Telescope find_files<CR>", opt)
+vim.keymap.set("n", "<C-p>", ":Telescope find_files<CR>", opts)
 -- 全局搜索
-vim.keymap.set("n", "<C-f>", ":Telescope live_grep<CR>", opt)
+vim.keymap.set("n", "<C-f>", ":Telescope live_grep<CR>", opts)
+-- buffers
+vim.keymap.set("n", "<leader>fb", ":Telescope buffers<CR>", opts)
+-- help tag
+vim.keymap.set("n", "<leader>fh", ":Telescope help tags<CR>", opts)
 
 -----------------
 -- Visual mode --

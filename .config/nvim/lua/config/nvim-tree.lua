@@ -30,20 +30,20 @@ nvim_tree.setup({
     side = "left",
     -- 行号是否显示
     number = true,
-    relativenumber = true,
+    relativenumber = false,
     -- 显示图标
     signcolumn = "yes", 
-    width = 34,
+    width = 40,
   },
   renderer = {
     group_empty = true,
   },
-  --actions = {
-    --open_file = {
+  actions = {
+    open_file = {
       -- 首次打开大小适配
-      --   resize_window = true,
+      resize_window = true,
       -- 打开文件时关闭 tree
-      --      quit_on_open = false,
-      -- },
-      --  },
+      quit_on_open = false,
+    },
+  },
 })

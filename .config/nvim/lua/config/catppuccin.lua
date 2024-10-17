@@ -1,5 +1,5 @@
 require("catppuccin").setup({
-    flavour = "auto", -- latte, frappe, macchiato, mocha
+    flavour = "mocah", -- latte, frappe, macchiato, mocha
     background = { -- :h background
         light = "latte",
         dark = "mocha",
@@ -12,15 +12,15 @@ require("catppuccin").setup({
         shade = "dark",
         percentage = 0.15, -- percentage of the shade to apply to the inactive window
     },
-    no_italic = true, -- Force no italic
+    no_italic = false, -- Force no italic
     no_bold = true, -- Force no bold
     no_underline = false, -- Force no underline
     styles = { -- Handles the styles of general hi groups (see `:h highlight-args`):
         comments = { "italic" }, -- Change the style of comments
         conditionals = { "italic" },
         loops = {},
-        functions = {},
-        keywords = {},
+        functions = { "italic" },
+        keywords = { "italic" },
         strings = {},
         variables = {},
         numbers = {},
@@ -30,7 +30,11 @@ require("catppuccin").setup({
         operators = {},
         -- miscs = {}, -- Uncomment to turn off hard-coded styles
     },
-    color_overrides = {},
+    color_overrides = {
+      mocha = {
+        base = "#000000",
+      }
+    },
     custom_highlights = {},
     default_integrations = true,
     integrations = {
@@ -45,4 +49,11 @@ require("catppuccin").setup({
         },
         -- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
     },
+    highlight_overrides = {
+      mocha = function(mocha)
+        return {
+          NvimTreeNormal = { bg = mocha.none },
+        }
+      end
+    }
 })

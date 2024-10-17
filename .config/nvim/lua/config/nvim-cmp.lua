@@ -6,6 +6,7 @@ end
 
 local luasnip = require("luasnip")
 local cmp = require("cmp")
+local lspkind = require("lspkind")
 
 
 cmp.setup({
@@ -49,25 +50,38 @@ cmp.setup({
         end, { "i", "s" }),
     }),
 
-  -- Let's configure the item's appearance
-  -- source: https://github.com/hrsh7th/nvim-cmp/wiki/Menu-Appearance
-  formatting = {
-      -- Set order from left to right
-      -- kind: single letter indicating the type of completion
-      -- abbr: abbreviation of "word"; when not empty it is used in the menu instead of "word"
-      -- menu: extra text for the popup menu, displayed after "word" or "abbr"
-      fields = { 'abbr', 'menu' },
+  -- -- Let's configure the item's appearance
+  -- -- source: https://github.com/hrsh7th/nvim-cmp/wiki/Menu-Appearance
+  -- formatting = {
+  --     -- Set order from left to right
+  --     -- kind: single letter indicating the type of completion
+  --     -- abbr: abbreviation of "word"; when not empty it is used in the menu instead of "word"
+  --     -- menu: extra text for the popup menu, displayed after "word" or "abbr"
+  --     fields = { 'abbr', 'menu' },
+  --
+  --     -- customize the appearance of the completion menu
+  --     format = function(entry, vim_item)
+  --         vim_item.menu = ({
+  --             nvim_lsp = '[Lsp]',
+  --             luasnip = '[Luasnip]',
+  --             buffer = '[File]',
+  --             path = '[Path]',
+  --         })[entry.source.name]
+  --         return vim_item
+  --     end,
+  -- },
+  
 
-      -- customize the appearance of the completion menu
-      format = function(entry, vim_item)
-          vim_item.menu = ({
-              nvim_lsp = '[Lsp]',
-              luasnip = '[Luasnip]',
-              buffer = '[File]',
-              path = '[Path]',
-          })[entry.source.name]
-          return vim_item
-      end,
+  formatting = {
+    format = lspkind.cmp_format({
+      with_text = true,
+      maxwidth = 50,
+
+      before = function(entry, vim_item)
+        vim_item.menu = "[" .. string.upper(entry.source.name) .. "]"
+        return vim_item
+      end
+    })
   },
 
   -- Set source precedence
