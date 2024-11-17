@@ -39,6 +39,14 @@ require("lazy").setup({
     "L3MON4D3/LuaSnip",
     version = "v2.*",
   },
+  -- 函数签名提示
+  {
+    "ray-x/lsp_signature.nvim",
+    event = "VeryLazy",
+    config = function() 
+      require("config.lsp-signature")
+    end
+  },
   -- LSP manager
   "williamboman/mason.nvim",
   "williamboman/mason-lspconfig.nvim",

@@ -78,7 +78,8 @@ cmp.setup({
       maxwidth = 50,
 
       before = function(entry, vim_item)
-        vim_item.menu = "[" .. string.upper(entry.source.name) .. "]"
+        vim_item.menu = "[" .. entry.source.name .. "]"
+        -- vim_item.menu = "[" .. string.upper(entry.source.name) .. "]"
         return vim_item
       end
     })
@@ -93,3 +94,29 @@ cmp.setup({
   })
 })
 
+
+-- `:` cmdline setup.
+cmp.setup.cmdline(':', {
+  mapping = cmp.mapping.preset.cmdline(),
+  sources = cmp.config.sources({
+    { 
+      name = 'path' 
+    } 
+  }, 
+  {
+    {
+      name = 'cmdline',
+      option = {
+        ignore_cmds = { 'Man', '!' }
+      }
+    }
+  })
+})
+
+-- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
+cmp.setup.cmdline({ '/', '?' }, {
+  mapping = cmp.mapping.preset.cmdline(),
+  sources = {
+    { name = 'buffer' }
+  }
+})
